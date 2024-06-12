@@ -1,0 +1,55 @@
+﻿@using X.PagedList.Mvc.Core
+@model X.PagedList.IPagedList<AssetViewModel>
+
+@{
+    ViewBag.Title = "Assets";
+}
+
+<h2>Assets</h2>
+
+<table class="table">
+    <tr>
+        <th>Segment</th>
+        <th>Country</th>
+        <th>Product</th>
+        <th>Discount Band</th>
+        <th>Units Sold</th>
+        <th>Manufacturing Price</th>
+        <th>Sale Price</th>
+        <th>Sale Price</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Segment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiscountBand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitsSold )
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ManufacturingPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalePrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

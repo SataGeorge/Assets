@@ -1,0 +1,6 @@
+@Assets.API_HostAddress = http://localhost:5018
+
+GET {{Assets.API_HostAddress}}/assets/
+Accept: application/json
+
+###
